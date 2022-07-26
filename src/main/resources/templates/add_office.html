@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" th:if="${userLogin != null}">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </div>
+            <div class="navbar-nav" th:unless="${userLogin != null}">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <h2 th:text="${officeObject.id != null} ? 'Edit Office':'Create New Office'"></h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="m-sm-4">
+                    <form th:action="@{/office/save}" method="post" th:object="${officeObject}" >
+                        <div class="mb-3">
+                            <label class="form-label">Office Name</label>
+                            <input class="form-control " type="text" th:field="*{officeName}" name="name"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" th:field="*{status}">
+                                <div th:if="${officeObject.status == false}">
+                                    <option th:text="Empty" th:value="false"  selected></option>
+                                    <option th:text="NotEmpty" th:value="true" ></option>
+                                </div>
+                                <div th:if="${officeObject.status == true}">
+                                    <option th:text="Empty" th:value="false" ></option>
+                                    <option th:text="NotEmpty" th:value="true" selected></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input class="form-control " type="text" th:field="*{price}" name="price" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Area</label>
+                            <input class="form-control " type="text" th:field="*{area}" name="area" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Floor</label>
+                            <select class="form-control " th:field="*{floorDTO.id}">
+                                <div th:each="cates : ${listFloor}" >
+                                    <div th:if="${officeObject.floorDTO.id == cates.id}">
+                                        <option th:text="${cates.name}" th:value="${cates.id}" selected></option>
+                                    </div>
+                                    <div th:unless="${officeObject.floorDTO.id == cates.id}">
+                                        <option th:text="${cates.name}" th:value="${cates.id}"></option>
+                                    </div>
+                                </div>
+                            </select>
+                        </div>
+                        <input type="hidden" th:field="*{id}" name="id">
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-lg btn-primary">ADD</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

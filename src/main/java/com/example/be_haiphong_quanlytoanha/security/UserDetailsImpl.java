@@ -1,4 +1,4 @@
-package com.example.be_haiphong_quanlytoanha.service.impl;
+package com.example.be_haiphong_quanlytoanha.security;
 
 import com.example.be_haiphong_quanlytoanha.entity.RoleEntity;
 import com.example.be_haiphong_quanlytoanha.entity.UserEntity;

@@ -21,7 +21,7 @@ public class OfficeEntity {
     private Long id;
     @Column(name = "office_name")
     private String officeName;
-    private boolean status = false;
+    private boolean status;
     private int price;
     private int area;
 

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -20,7 +21,8 @@ public class FloorDTO {
 
     public static FloorDTO entityToDTO(FloorEntity object){
         return FloorDTO.builder()
-
+                .id(object.getId())
+                .name(object.getName())
                 .build();
     }
     public static FloorEntity dtoToEntity(FloorDTO object){

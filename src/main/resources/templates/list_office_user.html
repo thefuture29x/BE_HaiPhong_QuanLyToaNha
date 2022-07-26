@@ -8,35 +8,36 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Features</a>
-                    <a class="nav-link" href="#">Pricing</a>
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <div class="navbar-nav" th:if="${userLogin != null}">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </div>
+                <div class="navbar-nav" th:unless="${userLogin != null}">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="container">
+        <h2 th:text="${userLogin != null} ? 'HELLO '+${userLogin.username} :'' "></h2>
         <table class="table table-hover my-0">
             <thead>
             <tr>
-                <th colspan="6">
-                    <a th:href="@{/office/create}">Create New Office</a>
+                <th colspan="7">
+                    <a th:href="|@{/user/office/rented-office?idUser=}${userLogin.id}|">Rented Office</a>
                 </th>
             </tr>
             <tr>
-                <th scope="col">Văn phòng</th>
-                <th scope="col">Tình trạng</th>
-                <th scope="col">Giá thuê</th>
-                <th scope="col">Diện tích</th>
-                <th scope="col"></th>
+                <th scope="col">Office Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Price</th>
+                <th scope="col">Area</th>
+                <th scope="col">Floor</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -46,11 +47,12 @@
                 <th th:text="${items.status} == false ? 'Còn trống':'Đã cho thuê'"></th>
                 <th th:text="${items.price}"></th>
                 <th th:text="${items.area}"></th>
-                <th>
-                    <a th:href="|@{/office/edit?id=}${items.id}|">Edit</a>
+                <th th:text="${items.floorDTO.name}"></th>
+                <th th:if="${items.status} == false">
+                    <a th:href="|@{/user/office/rent?idOffice=}${items.id}@{&idUser=}${userLogin.id}|">Rent</a>
                 </th>
-                <th>
-                    <a th:href="|@{/office/delete?id=}${items.id}|">Delete</a>
+                <th th:unless="${items.status} == false">
+                    <a></a>
                 </th>
             </tr>
             </tbody>

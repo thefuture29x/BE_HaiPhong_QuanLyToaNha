@@ -38,7 +38,11 @@ public class OfficeDTO {
 
     public static OfficeEntity dtoToEntity(OfficeDTO object){
         return OfficeEntity.builder()
-
+                .id(object.getId())
+                .officeName(object.getOfficeName())
+                .status(object.isStatus())
+                .price(object.getPrice())
+                .area(object.getArea())
                 .build();
     }
 
