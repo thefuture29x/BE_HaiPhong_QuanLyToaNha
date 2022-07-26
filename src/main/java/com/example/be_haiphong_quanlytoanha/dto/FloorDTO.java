@@ -1,3 +1,12 @@
+package com.example.be_haiphong_quanlytoanha.dto;
+
+import com.example.be_haiphong_quanlytoanha.entity.FloorEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder

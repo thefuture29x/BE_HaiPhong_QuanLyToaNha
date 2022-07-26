@@ -1,5 +1,5 @@
-import com.example.module_javaspringboot_finalproject.config.AuthProvider;
-import com.example.module_javaspringboot_finalproject.dto.UserDTO;
+package com.example.be_haiphong_quanlytoanha.entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

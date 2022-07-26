@@ -1,3 +1,10 @@
+package com.example.be_haiphong_quanlytoanha.dto;
+
+import com.example.be_haiphong_quanlytoanha.entity.RoleEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder

@@ -1,6 +1,5 @@
-package com.example.module_javaspringboot_finalproject.entities;
+package com.example.be_haiphong_quanlytoanha.entity;
 
-import com.example.module_javaspringboot_finalproject.dto.RoleDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

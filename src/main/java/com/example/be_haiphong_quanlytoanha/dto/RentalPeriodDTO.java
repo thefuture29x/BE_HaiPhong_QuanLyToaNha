@@ -1,3 +1,6 @@
+package com.example.be_haiphong_quanlytoanha.dto;
+
+import com.example.be_haiphong_quanlytoanha.entity.RentalPeriodEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
