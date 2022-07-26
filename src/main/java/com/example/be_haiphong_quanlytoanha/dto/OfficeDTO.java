@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -25,7 +26,13 @@ public class OfficeDTO {
 
     public static OfficeDTO entityToDTO(OfficeEntity object){
         return OfficeDTO.builder()
-
+                .id(object.getId())
+                .officeName(object.getOfficeName())
+                .status(object.isStatus())
+                .price(object.getPrice())
+                .area(object.getArea())
+                .floorDTO(object.getFloorEntity() != null ? FloorDTO.entityToDTO(object.getFloorEntity()) :null)
+                .rentalPeriodDTOList(object.getRentalPeriodEntityList() != null ? object.getRentalPeriodEntityList().stream().map(data -> RentalPeriodDTO.entityToDTO(data)).collect(Collectors.toList()) : null)
                 .build();
     }
 

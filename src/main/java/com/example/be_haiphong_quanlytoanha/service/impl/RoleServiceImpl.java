@@ -4,9 +4,10 @@ import com.example.be_haiphong_quanlytoanha.dto.RoleDTO;
 import com.example.be_haiphong_quanlytoanha.service.IRoleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class RoleServiceImpl implements IRoleService {
     @Override
     public List<RoleDTO> findAll() {

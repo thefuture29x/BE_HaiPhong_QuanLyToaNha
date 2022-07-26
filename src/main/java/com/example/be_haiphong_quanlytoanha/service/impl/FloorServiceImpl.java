@@ -4,9 +4,10 @@ import com.example.be_haiphong_quanlytoanha.dto.FloorDTO;
 import com.example.be_haiphong_quanlytoanha.service.IFloorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class FloorServiceImpl implements IFloorService {
     @Override
     public List<FloorDTO> findAll() {

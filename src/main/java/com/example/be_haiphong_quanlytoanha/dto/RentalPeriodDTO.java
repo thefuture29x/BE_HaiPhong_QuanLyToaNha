@@ -22,7 +22,10 @@ public class RentalPeriodDTO {
 
     public static RentalPeriodDTO entityToDTO(RentalPeriodEntity object){
         return RentalPeriodDTO.builder()
-
+                .id(object.getId())
+                .timeRental(object.getTimeRental()+"")
+                .officeDTO(null)
+                .userDTO(null)
                 .build();
     }
 

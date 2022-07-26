@@ -1,35 +1,44 @@
 package com.example.be_haiphong_quanlytoanha.service.impl;
 
+import com.example.be_haiphong_quanlytoanha.dto.OfficeDTO;
 import com.example.be_haiphong_quanlytoanha.dto.RentalPeriodDTO;
+import com.example.be_haiphong_quanlytoanha.repository.IOfficeRepository;
+import com.example.be_haiphong_quanlytoanha.service.IOfficeService;
 import com.example.be_haiphong_quanlytoanha.service.IRentalPeriodService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class OfficeServiceImpl implements IRentalPeriodService {
+@Service
+public class OfficeServiceImpl implements IOfficeService {
+    @Autowired
+    IOfficeRepository iOfficeRepository;
     @Override
-    public List<RentalPeriodDTO> findAll() {
+    public List<OfficeDTO> findAll() {
+        return iOfficeRepository.findAll().stream().map(data -> OfficeDTO.entityToDTO(data)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<OfficeDTO> findAll(Pageable page) {
         return null;
     }
 
     @Override
-    public Page<RentalPeriodDTO> findAll(Pageable page) {
+    public OfficeDTO findById(Long id) {
         return null;
     }
 
     @Override
-    public RentalPeriodDTO findById(Long id) {
+    public OfficeDTO add(OfficeDTO dto) {
         return null;
     }
 
     @Override
-    public RentalPeriodDTO add(RentalPeriodDTO dto) {
-        return null;
-    }
-
-    @Override
-    public RentalPeriodDTO update(RentalPeriodDTO dto) {
+    public OfficeDTO update(OfficeDTO dto) {
         return null;
     }
 

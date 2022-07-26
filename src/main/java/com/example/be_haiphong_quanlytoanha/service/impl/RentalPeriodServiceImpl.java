@@ -4,9 +4,10 @@ import com.example.be_haiphong_quanlytoanha.dto.RentalPeriodDTO;
 import com.example.be_haiphong_quanlytoanha.service.IRentalPeriodService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class RentalPeriodServiceImpl implements IRentalPeriodService {
     @Override
     public List<RentalPeriodDTO> findAll() {
